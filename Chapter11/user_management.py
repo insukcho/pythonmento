@@ -3,7 +3,7 @@ import user_password_re as upr      # user_password_re 모듈 탑재
 
 # 사용자 클래스 정의
 class User:
-    """ This class keeping user's email address and password
+    """ Keeping user's email address and password
 
     Put email address & password when creating instance.
     And also need to check validation of address & password.
