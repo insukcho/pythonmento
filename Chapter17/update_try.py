@@ -24,7 +24,7 @@ def update_books():
     except:
 
         print ("예외 상황 발생")
-        sqlite3.rollback()                          # 데이터베이스 원복 (롤백)
+        conn.rollback()                          # 데이터베이스 원복 (롤백)
 
     # 정상 및 예외 처리 후 자원 해제를 위한 finally문 선언
     finally:
