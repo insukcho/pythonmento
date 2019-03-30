@@ -4,7 +4,7 @@ from Chapter17.select import select_one_book        # 데이터 조회용 함수
 
 # 데이터 수정용 함수
 def update_books():
-    conn = none
+    conn = None
 
     # 업데이트를 위한 try문 선언
     try:
@@ -16,19 +16,20 @@ def update_books():
         update_sql = 'UPDATE my_books SET recommendation=? WHERE title=?'
 
         # 수정 SQL 실행
-        cur.execute(update_sql, (1, '개발자의 코드'))
+        cur.execute(update_sql, (2, '클린 코드'))
 
-        conn.commit()                               # 데이터베이스 반영
+        conn.commit()                               # 데이터베이스 반영 (커밋)
 
     # 예외 처리를 위한 except문 선언
-    except sqlite3.Error, e:
+    except:
 
-        print ("Error {}:".format(e.args[0]))
+        print ("예외 상황 발생")
+        sqlite3.rollback()                          # 데이터베이스 원복 (롤백)
 
     # 정상 및 예외 처리 후 자원 해제를 위한 finally문 선언
     finally:
 
-        if con:                                     #커넥션 확보 유무 확인
+        if conn:                                     # 커넥션 확보 유무 확인
             conn.close()                            # 커넥션 닫기
 
 if __name__ == "__main__":		            # 외부에서 호출 시
